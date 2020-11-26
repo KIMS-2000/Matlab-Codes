@@ -1,0 +1,7 @@
+baseImage = pow2(get(0,'DefaultImageCData'),47);
+imageCell = repmat({zeros(size(baseImage))},8,7);
+for shift = 0:53
+ imageCell{shift+1} = bitshift(baseImage,shift);
+end;
+Images = cell2mat(imageCell');
+imshow(Images,[min(Images(:)) max(Images(:))]);
