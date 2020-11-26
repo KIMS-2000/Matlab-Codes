@@ -1,0 +1,13 @@
+A = [12,-900,4,2016,11,16]; % array to be sorted
+N = numel(A);
+for i = 1:N-1
+cm = -Inf; % initialise current maximum
+for j = i:N % search the *unsorted* part of the array
+if A(j) > cm
+cm = A(j); % store the new maximum
+index_max = j; % store the index of the new maximum
+end
+end
+A([i index_max]) = A([index_max i]); % swap
+end
+disp(A’) % display the sorted array in a column
