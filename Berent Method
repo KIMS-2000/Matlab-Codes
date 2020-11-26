@@ -1,0 +1,60 @@
+f=@(u) u*(1+0.7166/cos(25*sqrt(u)))-1.6901e-2; %Equation 
+a=-10;
+b=+10;
+err=0.001;
+%Testing root is bracketed between [a b]
+if f(a)*f(b) >=0
+    opts=struct('WindowsStyle','model','Interpreter','tex');
+    F=errordlg('The Root is out of the Brackets,increase a and b values'....
+        ,'Roots Are Not Bracketed',opts); %Message Box
+end
+%Swapping a and b Contents
+if abs(f(a)) < abs(f(b))
+    L=a; a=b; b=L;
+end
+c=a;
+MFlag=1;
+%Main Loop
+delta =err; i=0;
+while abs(b-a) >=err
+    i=i+1;
+    if f(a) ~=f(c)&&f(b) ~=f(c)
+        s=a*f(b)*f(c)/(f(a)-f(b))*(f(a)-f(c))+....
+            b*f(a)*f(c)/((f(b)*f(a))*(f(b)-f(c)))+...
+            c*f(a)*f(b)/((f(c)-f(a))*(f(c)-f(b))); %Inverse Quadratic Interpolation
+    else
+        s=b-f(b)*(b-a)/(f(b)-f(a));  %Secant method
+    end
+    if s<=(3*a+b)/4 || s>=b ||....
+            (MFlag==1 && abs(s-b) >= abs(b-c)/2) ||....
+            (MFlag==0 && abs(s-b) >= abs(c-d)/2) ||....
+            (MFlag==1 && abs(b-c) < abs(delta)) ||....
+            (MFlag==0 && abs(c-d) >= abs(delta))
+        s=(a+b)/2;  %Bisection Method
+        MFlag=1;
+    else
+        MFlag=0;
+    end
+    %Calculate f(s)
+    d=c; c=b;
+    if f(a)*f(s) <0
+        b=s;
+    else
+        a=s;
+    end
+    %Swapping a and b contents
+    if abs(f(a)) < abs(f(b))
+        if abs(f(a)) < abs(f(b))
+        L=a; a=b; b=L;
+        end
+    end
+    ss(i,1)=s;
+    dd(i,1)=d;
+    ii(i,1)=i;
+end
+
+plot(1:i,ss,'Linewidth',2);
+grid on
+title('Brent Method')
+xlabel('Number of Itterations')
+ylabel('Root Contents')
