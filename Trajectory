@@ -1,0 +1,47 @@
+clc,clear
+a = 60;
+v = 10;
+x = 0;
+y = 0;
+vx = v*cosd(a);
+vy = v*sind(a);
+g = 9.81;
+dt = 0.02;
+% plot([5 5],[3 5])           % wall
+hold on
+for i = 1:90
+    x = x + vx*dt;
+    y = y + vy*dt;
+    vy = vy - g*dt;
+    if abs(x-5) < 0.1 && (3 < y && y < 5)
+        vx = -0.9*vx;
+        x = x - 0.1;
+    end
+    a=plot(x,y,'ob')
+    pause(0.1)
+end
+hold on
+axis equal
+
+
+#Another Code For Trajectory
+% the ball will continuolsy moves in a projectile motion
+Vxo=50;
+Vyo=50;
+g=9.8;
+t=0:0.1:15;
+figure
+set(gcf,'position',[50,50,1200,500])
+for i=1:length(t)
+    x=Vxo*t(i);
+    y=Vyo*t(i)-g*t(i)^2;
+    plot(x,y,'o','MarkerFaceColor','b')
+    axis equal
+    xlabel('x in meters')
+    ylabel('y in meters')
+    xlim([0 300])
+    ylim([0 150])
+    grid on
+    drawnow
+end
+    
