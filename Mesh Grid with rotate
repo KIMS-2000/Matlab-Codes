@@ -1,0 +1,7 @@
+clear all; close all; clc
+[x,y] = meshgrid(linspace(2,12,4), linspace(-1,6,5));
+figure, hold on, grid on % open and hold a figure with a grid
+surf(x,y,x.*y) % plot the surface of function x*y
+surf(x,y,zeros(size(x))) % plot the plane of the zero-"ground"
+stem3(x,y,x.*y,’k*-’) % plot stems at all grid points from ground to surface
+rotate3d % allow for rotation of the figure with the mouse
