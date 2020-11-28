@@ -1,0 +1,44 @@
+t=0:0.001:2*pi;
+x=2*cos(t);
+y=1+2*sin(t);
+fill(x,y,'g'); %For Face
+axis square
+ hold on
+x2=-1+0.1*cos(t);
+y2=2+0.1*sin(t);
+fill(x2,y2,'k'); % For One eye
+hold on;
+x3=1+0.1*cos(t);
+y3=2+0.1*sin(t);
+fill(x3,y3,'k') %For Second Eye
+
+%For Sad Face
+t=-0.6:0.1:0.6;
+y=-t.^2; 
+plot(t,y,'r','linewidth',5)
+
+%For Happy Face
+t=-0.4:0.1:0.4;
+y=t.^2; 
+plot(t,y,'r','linewidth',5)
+
+%Smiling angles
+t=-0.6:0.1:0.6;
+y=t.^2;
+plot(t,y,'k','linewidth',5)
+hold on
+t=0:0.001:2*pi;
+x=2*cos(t);
+y=2.9+0.2*sin(t);
+plot(x,y,'b','linewidth',5);
+axis square
+
+%Neutral Face
+t=-0.4:0.1:0.4;
+y=[-0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 ];
+plot(t,y,'r','linewidth',5)
+
+%Open Mouth
+x=0.1*cos(t);
+y=-0.5+0.1*sin(t);
+fill(x,y,'w');
