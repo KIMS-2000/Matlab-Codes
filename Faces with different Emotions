@@ -42,3 +42,13 @@ plot(t,y,'r','linewidth',5)
 x=0.1*cos(t);
 y=-0.5+0.1*sin(t);
 fill(x,y,'w');
+
+%Sunglasses
+t=-0.4:0.1:0.4;
+y=t.^2;
+plot(t,y,'r','linewidth',5)
+axis square
+hold on;
+line([-1.9 -1.5],[1.7 1.5],'linewidth',2);
+hold on;
+line([1.9 1.5],[1.7 1.5],'linewidth',2)
