@@ -1,0 +1,36 @@
+x1=100;
+a=pi/12;
+u=0;
+r=5;
+m=0:2*pi/20:2*pi;
+for i=1:x1
+    if(r>0)
+ t=m+u*a;
+x=r*cos(t);
+y=r*sin(t);
+plot(x,y,'*');
+pause(0.1);
+axis square;
+hold on;
+u=u+0.1;
+r=r-0.1;
+    end
+end
+%To Repeat the Circles agian write the same Code
+hold on;
+r=5;
+u=0;
+m=0:2*pi/20:2*pi;
+for i=1:x1
+    if(r>0)
+ t=m-u*a;
+x=r*cos(t);
+y=r*sin(t);
+plot(x,y,'*');
+axis square;
+pause(0.1);
+hold on;
+u=u+0.1;
+r=r-0.1;
+    end
+end
