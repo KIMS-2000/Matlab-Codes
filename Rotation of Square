@@ -1,0 +1,21 @@
+clc
+clear all
+close all
+x1=50;
+a=pi/5;
+u=0;
+r=5;
+m=0:pi/2:2*pi;
+for i=1:x1
+    if(r>0)
+ t=m+u*a;
+x=r*cos(t);
+y=r*sin(t);
+plot(x,y,'g');
+axis square;
+pause(0.5);
+hold on;
+u=u+0.1;
+r=r-0.1;
+    end
+end
