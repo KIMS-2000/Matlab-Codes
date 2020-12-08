@@ -1,0 +1,36 @@
+% Program Code of Newton-Raphson Method for root finding
+a=input('Enter the function in the form of variable x:','s');
+x(1)=input('Enter Initial Guess:');
+error=0.001;
+f=inline(a)
+dif=diff(sym(a));
+d=inline(dif);
+for i=1:100
+x(i+1)=x(i)-((f(x(i))/d(x(i))));
+err(i)=abs((x(i+1)-x(i))/x(i));
+if err(i)<error
+break
+end
+end
+root=x(i)
+
+
+%Program to find roots with graph
+%Main Code
+x = 0.05;
+x_old = 100;
+x_true = 0.0623776;
+iter = 0;
+while abs(x_old-x) > 10^-3 && x ~= 0
+    x_old = x;
+    x = x - (x^3 - 0.165*x^2 + 3.993*10^-4)/(3*x^2 - 0.33*x);
+    iter = iter + 1;
+    fprintf('Iteration %d: x=%.20f, err=%.20f\n', iter, x, x_true-x);
+    pause;
+end
+%Equation
+x = -10:0.01:10;
+f = x.^3 - 0.165*x.^2 + 3.993*10^-4;
+figure;
+plot(f)
+grid on
