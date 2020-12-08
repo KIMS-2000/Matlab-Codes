@@ -1,0 +1,33 @@
+1)Write a function that is called pickone, which will receive one input argument x ,which is a vector, and will return one random element from the vector.  
+For 
+example, 
+>> pickone(4:7)
+ans =
+5
+
+function elem = pickone(invec)
+% pickone(x) returns a random element from vector x
+% Format of call: pickone(vector)
+% Returns random element from the vector
+
+len = length(invec);
+ran = randi([1, len]);
+elem = invec(ran);
+end 
+
+
+2)36) A function can return a vector as a result.  Write a function vecout that will receive one integer argument and will return a vector that increments from the 
+value of the input argument to its value plus 5, using the colon operator.  
+For 
+example,  
+>> vecout(4)
+ans =
+ 4 5 6 7 8 9
+
+function outvec = vecout(innum)
+% Create a vector from innum to innum + 5
+% Format of call: vecout(input number)
+% Returns a vector input num : input num+5
+
+outvec = innum:innum+5;
+end 
